@@ -1,0 +1,7 @@
+Change this file to .env or .env.local
+
+PORT=9000
+
+MONGODB_URI=your-mongo-database-uri
+
+JWT_SECRET=your-secret-key

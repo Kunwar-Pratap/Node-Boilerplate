@@ -1,0 +1,45 @@
+{
+  "name": "node-boilerplate",
+  "version": "1.0.0",
+  "description": "Node.js Boilerplate with TypeScript, Clustering, and PM2",
+  "license": "ISC",
+  "author": "kunwar pratap",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "pm2 start dist/server.js -i max --name node-boilerplate --watch --ignore-watch=node_modules,logs",
+    "dev": "ts-node src/server.ts",
+    "watch": "npm run build && pm2 start dist/server.js -i max --name node-boilerplate --watch --ignore-watch=node_modules,logs && pm2 start npm --name \"node-boilerplate-build\" -- run build --watch",
+    "restart": "npm run build && pm2 restart node-boilerplate",
+    "stop": "pm2 stop node-boilerplate node-boilerplate-build",
+    "delete": "pm2 delete node-boilerplate node-boilerplate-build",
+    "clean": "rm -rf dist",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.{ts,js,json,md}\""
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.13.1",
+    "mongoose": "^8.11.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
